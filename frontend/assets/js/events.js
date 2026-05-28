@@ -6,7 +6,31 @@ const eventDateParts = (value) => {
   };
 };
 
+const getEventId = (event) => event?._id || event?.id || '';
+
+const SELECTED_EVENT_ID_KEY = 'eventhubSelectedEventId';
+
+const usesStaticHtmlRoutes = () => {
+  return window.location.protocol === 'file:' || window.location.pathname.endsWith('.html');
+};
+
+const getEventDetailsUrl = (event) => {
+  const eventId = getEventId(event);
+  const detailsPath = usesStaticHtmlRoutes() ? 'event-details.html' : '/event-details';
+  return `${detailsPath}?id=${encodeURIComponent(eventId)}`;
+};
+
+const missingEventMessage = () => `
+  <div class="empty-state">
+    <i class="bi bi-exclamation-circle"></i>
+    <span>Event not found. Please go back to Events.</span>
+    <a class="btn btn-primary btn-sm mt-2" href="events.html"><i class="bi bi-arrow-left me-1"></i>Back to Events</a>
+  </div>
+`;
+
 const createEventCard = (event) => {
+  const eventId = getEventId(event);
+  const detailsUrl = getEventDetailsUrl(event);
   const description = event.description || '';
   const date = eventDateParts(event.date);
   const seats = Number(event.availableTickets || 0);
@@ -31,12 +55,24 @@ const createEventCard = (event) => {
           <small class="${seats > 0 ? 'status-confirmed' : 'status-cancelled'} fw-bold">${seats > 0 ? 'Open' : 'Sold out'}</small>
         </div>
         <div class="d-flex gap-2">
-          <a class="btn btn-outline-light btn-sm flex-fill" href="event-details.html?id=${encodeURIComponent(event._id)}"><i class="bi bi-eye me-1"></i>Details</a>
-          <a class="btn btn-primary btn-sm flex-fill" href="event-details.html?id=${encodeURIComponent(event._id)}"><i class="bi bi-ticket-perforated me-1"></i>Book Ticket</a>
+          <a class="btn btn-outline-light btn-sm flex-fill" data-event-details href="${detailsUrl}"><i class="bi bi-eye me-1"></i>Details</a>
+          <a class="btn btn-primary btn-sm flex-fill" data-event-details href="${detailsUrl}"><i class="bi bi-ticket-perforated me-1"></i>Book Ticket</a>
         </div>
       </div>
     </article>
   `;
+  col.querySelectorAll('[data-event-details]').forEach((link) => {
+    link.addEventListener('click', (clickEvent) => {
+      if (!eventId) {
+        clickEvent.preventDefault();
+        showToast('This event is missing an id. Please refresh and try again.', 'danger');
+        return;
+      }
+
+      sessionStorage.setItem(SELECTED_EVENT_ID_KEY, eventId);
+      link.href = getEventDetailsUrl(event);
+    });
+  });
   return col;
 };
 
@@ -94,14 +130,28 @@ const loadEventDetails = async () => {
   const root = qs('#eventDetails');
   if (!root) return;
 
-  const eventId = new URLSearchParams(window.location.search).get('id');
-  if (!eventId) {
-    root.innerHTML = '<div class="empty-state"><i class="bi bi-exclamation-circle"></i><span>Event not found.</span></div>';
+  const eventIdFromUrl = new URLSearchParams(window.location.search).get('id');
+  const eventId = eventIdFromUrl || sessionStorage.getItem(SELECTED_EVENT_ID_KEY);
+  if (!eventId || eventId === 'undefined' || eventId === 'null') {
+    root.innerHTML = missingEventMessage();
     return;
   }
 
+  if (!eventIdFromUrl && window.history?.replaceState) {
+    window.history.replaceState(null, '', `${window.location.pathname}?id=${encodeURIComponent(eventId)}`);
+  }
+
   try {
-    const { event } = await apiFetch(`/events/${encodeURIComponent(eventId)}`);
+    const { event } = await apiFetch(`/events/${eventId}`);
+    const fetchedEventId = getEventId(event);
+
+    if (!fetchedEventId) {
+      root.innerHTML = missingEventMessage();
+      return;
+    }
+
+    sessionStorage.setItem(SELECTED_EVENT_ID_KEY, fetchedEventId);
+
     const isSoldOut = Number(event.availableTickets || 0) < 1;
     const date = eventDateParts(event.date);
 
@@ -155,7 +205,7 @@ const loadEventDetails = async () => {
         await apiFetch('/bookings', {
           method: 'POST',
           body: JSON.stringify({
-            eventId,
+            eventId: fetchedEventId,
             quantity: Number(qs('#quantity').value)
           })
         });
@@ -170,7 +220,7 @@ const loadEventDetails = async () => {
       }
     });
   } catch (error) {
-    root.innerHTML = `<div class="empty-state"><i class="bi bi-wifi-off"></i><span>Could not load this event. ${escapeHTML(error.message)}</span></div>`;
+    root.innerHTML = missingEventMessage();
   }
 };
 

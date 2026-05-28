@@ -66,15 +66,15 @@ The project focuses on clean architecture, secure authentication, responsive UI/
 
 | Home Page                             | Events Page                       |
 | ------------------------------------- | --------------------------------- |
-| ![Homepage](screenshots/homepage.png) | ![Events](screenshots/events.png) |
+| ![Homepage](screenshots/home.png) | ![Events](screenshots/events.png) |
 
 | Event Details                                   | Admin Dashboard                               |
 | ----------------------------------------------- | --------------------------------------------- |
-| ![Event Details](screenshots/event-details.png) | ![Dashboard](screenshots/admin-dashboard.png) |
+| ![Event Details](screenshots/event-details.png) | ![Dashboard](screenshots/dashboard.png) |
 
 | My Tickets                             | Add Event                               |
 | -------------------------------------- | --------------------------------------- |
-| ![Tickets](screenshots/my-tickets.png) | ![Add Event](screenshots/add-event.png) |
+| ![Tickets](screenshots/tickets.png) | ![Add Event](screenshots/add-event.png) |
 
 
 ---
