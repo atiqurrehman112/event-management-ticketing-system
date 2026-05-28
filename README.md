@@ -1,59 +1,53 @@
-# EventHub - Premium Event Management and Ticketing System
+<div align="center">
 
-EventHub is a full-stack event management and ticketing platform built as a professional GitHub portfolio project. It combines a premium dark Bootstrap 5 frontend with a secure Node.js, Express, MongoDB, and JWT backend.
+# 🎟️ EventHub
 
-The application supports public event discovery, user registration, ticket booking, ticket cancellation, poster uploads, and an admin dashboard for managing events and bookings.
+## Premium Event Management & Ticketing System
 
-## Portfolio Highlights
+**A professional full-stack event platform built with Node.js, Express, MongoDB, Bootstrap 5, and Vanilla JavaScript.**
 
-- Premium dark navy interface with glassmorphism cards and gradient accents
-- Responsive landing page, event catalog, ticket dashboard, and admin workspace
-- Secure JWT authentication with role-based admin authorization
-- MongoDB schemas for users, events, and bookings
-- Multer-based image uploads for event posters
-- Atomic ticket inventory updates to reduce overselling risk
-- Friendly toast notifications, loading states, and polished forms
-- Automated API tests for the main user and admin flows
+![Node.js](https://img.shields.io/badge/Node.js-18+-339933?style=for-the-badge&logo=node.js&logoColor=white)
+![Express](https://img.shields.io/badge/Express.js-Backend-000000?style=for-the-badge&logo=express&logoColor=white)
+![MongoDB](https://img.shields.io/badge/MongoDB-Database-47A248?style=for-the-badge&logo=mongodb&logoColor=white)
+![Bootstrap](https://img.shields.io/badge/Bootstrap-5-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white)
+![JavaScript](https://img.shields.io/badge/Vanilla-JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)
 
-## Screenshots
+</div>
 
-Add screenshots to this section when publishing the project:
+---
 
-```text
-screenshots/
-  home.png
-  events.png
-  event-details.png
-  admin-dashboard.png
-  add-event.png
-```
+## 📌 Project Overview
 
-Suggested views:
+EventHub is a premium full-stack event management and ticketing system designed as a portfolio-ready SaaS-style web application. It allows users to discover events, register accounts, book tickets, manage their bookings, and cancel tickets when needed.
 
-- Homepage hero and featured events
-- Event listing cards
-- Event details and booking form
-- My tickets page
-- Admin dashboard metrics and recent bookings
-- Add event form
+Admins can create and manage event listings, upload event posters, monitor bookings, and view dashboard metrics such as total events, bookings, users, and revenue.
 
-## Features
+The project focuses on clean architecture, secure authentication, responsive UI/UX, role-based authorization, and practical backend workflows.
 
-- User registration and login
-- JWT-protected routes
-- bcryptjs password hashing
-- User roles: `user` and `admin`
-- Admin-only event creation, update, and deletion
-- Poster image upload for events
-- Public event listing and event details
-- Ticket booking with available seat tracking
-- Ticket cancellation with inventory restoration
-- User ticket history
-- Admin dashboard with total events, bookings, users, and revenue
-- Recent bookings table
-- Responsive UI for mobile, tablet, and desktop
+---
 
-## Tech Stack
+## ✨ Features
+
+- 🔐 JWT-based authentication
+- 🔑 Secure password hashing with bcryptjs
+- 👤 User and admin roles
+- 🧾 User registration and login
+- 🎫 Ticket booking with seat availability tracking
+- ❌ Ticket cancellation with inventory restoration
+- 🗂️ Admin event CRUD operations
+- 🖼️ Event poster image uploads with multer
+- 📊 Admin dashboard with platform metrics
+- 📋 Recent bookings table
+- 🔎 Public event listing and event details pages
+- 💎 Premium dark SaaS-style UI
+- 📱 Fully responsive layout for mobile, tablet, and desktop
+- 🔔 Toast notifications and loading states
+- 🧪 API tests for major user/admin flows
+
+---
+
+## 🛠️ Tech Stack
 
 | Layer | Technology |
 | --- | --- |
@@ -61,30 +55,76 @@ Suggested views:
 | Backend | Node.js, Express.js |
 | Database | MongoDB, Mongoose |
 | Authentication | JWT |
-| Password Security | bcryptjs |
+| Password Hashing | bcryptjs |
 | File Uploads | multer |
+| Styling | Custom CSS, Bootstrap Icons |
 | Testing | Node test runner, supertest |
 
-## Project Structure
+---
+
+## 🖼️ Screenshots
+
+Add screenshots to a `screenshots/` folder and update these paths after capturing your UI.
+
+| Home Page | Events Page |
+| --- | --- |
+| `screenshots/home.png` | `screenshots/events.png` |
+
+| Event Details | Admin Dashboard |
+| --- | --- |
+| `screenshots/event-details.png` | `screenshots/admin-dashboard.png` |
+
+Suggested screenshots:
+
+- Homepage hero and featured events
+- Event listing cards
+- Event details and booking form
+- My tickets page
+- Admin dashboard
+- Add event form
+
+---
+
+## 📁 Folder Structure
 
 ```text
 event-management-ticketing-system/
   backend/
     config/
+      db.js
     middleware/
+      authMiddleware.js
+      uploadMiddleware.js
     models/
+      User.js
+      Event.js
+      Booking.js
     routes/
+      authRoutes.js
+      eventRoutes.js
+      bookingRoutes.js
     scripts/
+      createAdmin.js
     tests/
+      api.test.js
     uploads/
-    server.js
-    package.json
+      events/
     .env.example
+    package.json
+    server.js
+
   frontend/
     assets/
       css/
+        styles.css
       images/
+        eventhub-hero.png
       js/
+        api.js
+        auth.js
+        events.js
+        tickets.js
+        admin.js
     index.html
     login.html
     register.html
@@ -93,19 +133,31 @@ event-management-ticketing-system/
     my-tickets.html
     admin-dashboard.html
     add-event.html
+
   README.md
 ```
 
-## Installation
+---
 
-Clone the repository and install backend dependencies:
+## ⚙️ Installation
+
+### 1. Clone the repository
+
+```bash
+git clone <your-repository-url>
+cd event-management-ticketing-system
+```
+
+### 2. Install backend dependencies
 
 ```bash
 cd backend
 npm install
 ```
 
-Create the environment file:
+### 3. Create environment file
+
+PowerShell:
 
 ```powershell
 Copy-Item .env.example .env
@@ -117,21 +169,23 @@ macOS/Linux:
 cp .env.example .env
 ```
 
-Start the backend:
+### 4. Start the backend server
 
 ```bash
 npm run dev
 ```
 
-The API runs at:
+The backend API runs at:
 
 ```text
 http://localhost:5000/api
 ```
 
-## Environment Variables
+---
 
-Create `backend/.env` with:
+## 🔧 Environment Setup
+
+Create `backend/.env` and configure:
 
 ```env
 PORT=5000
@@ -145,15 +199,42 @@ ADMIN_EMAIL=admin@eventhub.local
 ADMIN_PASSWORD=Admin@12345
 ```
 
-Use MongoDB Atlas by replacing `MONGO_URI`:
+Recommended production notes:
+
+- Use a long, random `JWT_SECRET`.
+- Do not commit `.env`.
+- Use MongoDB Atlas or a managed MongoDB instance for deployment.
+- Restrict `CLIENT_URL` to trusted frontend origins.
+
+---
+
+## 🍃 MongoDB Setup
+
+### Local MongoDB
+
+Install and start MongoDB locally, then use:
+
+```env
+MONGO_URI=mongodb://127.0.0.1:27017/eventhub
+```
+
+### MongoDB Atlas
+
+Replace `MONGO_URI` with your Atlas connection string:
 
 ```env
 MONGO_URI=mongodb+srv://<username>:<password>@<cluster-url>/eventhub
 ```
 
-## Admin Credentials
+Make sure your Atlas cluster allows connections from your IP address.
 
-The admin account is created through the seed script. Configure these values first:
+---
+
+## 👑 Admin Credentials
+
+Admin users are created through the seed script.
+
+Set these values in `backend/.env`:
 
 ```env
 ADMIN_NAME=EventHub Admin
@@ -161,18 +242,32 @@ ADMIN_EMAIL=admin@eventhub.local
 ADMIN_PASSWORD=Admin@12345
 ```
 
-Then run:
+Run:
 
 ```bash
 cd backend
 npm run seed:admin
 ```
 
-After seeding, log in at `frontend/login.html` using the configured admin email and password.
+Then log in from:
 
-## Frontend Usage
+```text
+frontend/login.html
+```
 
-Open the frontend directly:
+Admin accounts can:
+
+- Create events
+- Edit events
+- Delete events without active bookings
+- View all bookings
+- View dashboard metrics
+
+---
+
+## 🖥️ Frontend Usage
+
+Open the frontend directly in your browser:
 
 ```text
 frontend/index.html
@@ -185,126 +280,136 @@ cd frontend
 npx serve .
 ```
 
-By default, the frontend calls:
+The frontend calls this API by default:
 
 ```text
 http://localhost:5000/api
 ```
 
-To change the API URL from the browser console:
+To override the API URL from the browser console:
 
 ```js
 localStorage.setItem('eventhubApiBase', 'http://localhost:5000/api');
 ```
 
-## API Routes
+---
 
-### Auth
+## 📡 API Endpoints
+
+### Auth Routes
 
 | Method | Endpoint | Access | Description |
 | --- | --- | --- | --- |
-| POST | `/api/auth/register` | Public | Register a user |
+| POST | `/api/auth/register` | Public | Register a new user |
 | POST | `/api/auth/login` | Public | Login and receive JWT |
-| GET | `/api/auth/me` | Authenticated | Get current user |
+| GET | `/api/auth/me` | Authenticated | Get current user profile |
 | GET | `/api/auth/users/count` | Admin | Get total user count |
 
-### Events
+### Event Routes
 
 | Method | Endpoint | Access | Description |
 | --- | --- | --- | --- |
-| GET | `/api/events` | Public | List events |
-| GET | `/api/events/:id` | Public | Get event details |
-| POST | `/api/events` | Admin | Create event, supports `poster` upload |
-| PUT | `/api/events/:id` | Admin | Update event, supports `poster` upload |
-| DELETE | `/api/events/:id` | Admin | Delete event if it has no active bookings |
+| GET | `/api/events` | Public | Get all events |
+| GET | `/api/events/:id` | Public | Get a single event |
+| POST | `/api/events` | Admin | Create event with optional poster |
+| PUT | `/api/events/:id` | Admin | Update event with optional poster |
+| DELETE | `/api/events/:id` | Admin | Delete event if no active bookings exist |
 
-### Bookings
+### Booking Routes
 
 | Method | Endpoint | Access | Description |
 | --- | --- | --- | --- |
-| POST | `/api/bookings` | Authenticated | Book tickets |
-| GET | `/api/bookings/mine` | Authenticated | View my tickets |
-| PATCH | `/api/bookings/:id/cancel` | Owner or Admin | Cancel booking |
+| POST | `/api/bookings` | Authenticated | Book tickets for an event |
+| GET | `/api/bookings/mine` | Authenticated | View logged-in user's tickets |
+| PATCH | `/api/bookings/:id/cancel` | Owner/Admin | Cancel a booking |
 | GET | `/api/bookings/admin` | Admin | View all bookings |
 
-## Test Commands
+---
 
-Run automated API tests:
+## 🧪 Testing
+
+Run the backend API test suite:
 
 ```bash
 cd backend
 npm test
 ```
 
-The suite verifies registration, login, admin event creation, event listing, event update, booking, viewing tickets, admin booking access, cancellation, authorization, and poster upload paths.
+The tests cover:
 
-To test against a different database:
+- User registration
+- User login
+- Admin login
+- Admin event creation
+- Event listing and details
+- Event update
+- Ticket booking
+- My tickets
+- Ticket cancellation
+- Admin booking view
+- Admin authorization
+- Poster upload path handling
+
+To use a custom test database:
 
 ```env
 TEST_MONGO_URI=mongodb://127.0.0.1:27017/eventhub_test
 ```
 
-## Sample API Flow
+---
 
-Register user:
+## 🚀 Future Improvements
 
-```bash
-curl -X POST http://localhost:5000/api/auth/register \
-  -H "Content-Type: application/json" \
-  -d "{\"name\":\"Jane User\",\"email\":\"jane@example.com\",\"password\":\"User@12345\"}"
-```
+- 💳 Payment gateway integration
+- 📧 Email ticket confirmations
+- 📱 QR code ticket generation
+- 🔍 Advanced filtering and pagination
+- 🧑‍💼 Organizer profiles
+- 📈 Analytics charts for admin dashboard
+- 🪪 Ticket check-in workflow
+- ☁️ Cloud image storage with Cloudinary or S3
+- 🌐 Deployment guide for Render, Railway, or Vercel static hosting
+- 🧾 Downloadable ticket PDFs
 
-Login:
+---
 
-```bash
-curl -X POST http://localhost:5000/api/auth/login \
-  -H "Content-Type: application/json" \
-  -d "{\"email\":\"jane@example.com\",\"password\":\"User@12345\"}"
-```
+## 🧾 Available Scripts
 
-Create event as admin:
-
-```bash
-curl -X POST http://localhost:5000/api/events \
-  -H "Authorization: Bearer <ADMIN_TOKEN>" \
-  -H "Content-Type: application/json" \
-  -d "{\"title\":\"Product Summit\",\"description\":\"A conference for product teams.\",\"category\":\"Conference\",\"date\":\"2027-08-20\",\"time\":\"18:30\",\"venue\":\"Civic Hall\",\"city\":\"Chicago\",\"price\":75,\"totalTickets\":100}"
-```
-
-Book ticket:
+Run from the `backend/` folder:
 
 ```bash
-curl -X POST http://localhost:5000/api/bookings \
-  -H "Authorization: Bearer <USER_TOKEN>" \
-  -H "Content-Type: application/json" \
-  -d "{\"eventId\":\"<EVENT_ID>\",\"quantity\":2}"
+npm start          # Start backend server
+npm run dev        # Start backend with nodemon
+npm test           # Run API tests
+npm run seed:admin # Create or update admin user
 ```
 
-Cancel ticket:
+---
 
-```bash
-curl -X PATCH http://localhost:5000/api/bookings/<BOOKING_ID>/cancel \
-  -H "Authorization: Bearer <USER_TOKEN>"
-```
+## 👨‍💻 Author
 
-## GitHub Portfolio Description
+**Your Name**
 
-EventHub is a professional full-stack event management and ticketing system built with Node.js, Express, MongoDB, Bootstrap 5, and Vanilla JavaScript. It demonstrates secure authentication, role-based access control, CRUD operations, file uploads, booking workflows, responsive UI design, and API test coverage in a clean portfolio-ready project.
+- GitHub: [@your-github-username](https://github.com/your-github-username)
+- LinkedIn: [Your LinkedIn Profile](https://www.linkedin.com/)
+- Portfolio: [Your Portfolio Website](https://example.com)
 
-## Scripts
+Update this section with your real portfolio links before publishing.
 
-```bash
-npm start        # run backend
-npm run dev      # run backend with nodemon
-npm test         # run API tests
-npm run seed:admin
-```
+---
 
-## Security Notes
+## 📄 License
 
-- Use a strong `JWT_SECRET` before deployment.
-- Admin authorization is enforced on backend routes.
-- Passwords are hashed before storage.
-- Uploaded files are limited to common image MIME types.
-- Event mutations whitelist accepted fields.
-- Booking inventory updates use atomic MongoDB operations.
+This project is licensed under the **MIT License**.
+
+You are free to use, modify, and distribute this project for learning, portfolio, and professional demonstration purposes.
+
+---
+
+<div align="center">
+
+### ⭐ If you like this project, consider starring the repository.
+
+Built with care for a professional full-stack portfolio.
+
+</div>
