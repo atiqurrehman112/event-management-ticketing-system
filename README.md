@@ -64,24 +64,18 @@ The project focuses on clean architecture, secure authentication, responsive UI/
 
 ## 🖼️ Screenshots
 
-Add screenshots to a `screenshots/` folder and update these paths after capturing your UI.
+| Home Page                             | Events Page                       |
+| ------------------------------------- | --------------------------------- |
+| ![Homepage](screenshots/homepage.png) | ![Events](screenshots/events.png) |
 
-| Home Page | Events Page |
-| --- | --- |
-| `screenshots/home.png` | `screenshots/events.png` |
+| Event Details                                   | Admin Dashboard                               |
+| ----------------------------------------------- | --------------------------------------------- |
+| ![Event Details](screenshots/event-details.png) | ![Dashboard](screenshots/admin-dashboard.png) |
 
-| Event Details | Admin Dashboard |
-| --- | --- |
-| `screenshots/event-details.png` | `screenshots/admin-dashboard.png` |
+| My Tickets                             | Add Event                               |
+| -------------------------------------- | --------------------------------------- |
+| ![Tickets](screenshots/my-tickets.png) | ![Add Event](screenshots/add-event.png) |
 
-Suggested screenshots:
-
-- Homepage hero and featured events
-- Event listing cards
-- Event details and booking form
-- My tickets page
-- Admin dashboard
-- Add event form
 
 ---
 
@@ -386,15 +380,16 @@ npm run seed:admin # Create or update admin user
 
 ---
 
+---
+
 ## 👨‍💻 Author
 
-**Your Name**
+**Atiq ur Rehman**
 
-- GitHub: [@your-github-username](https://github.com/your-github-username)
-- LinkedIn: [Your LinkedIn Profile](https://www.linkedin.com/)
-- Portfolio: [Your Portfolio Website](https://example.com)
-
-Update this section with your real portfolio links before publishing.
+* GitHub: [@243472-hash](https://github.com/243472-hash)
+* LinkedIn: [Atiq ur Rehman](https://www.linkedin.com/in/atiq261)
+* University: Air University Islamabad Campus
+* Department: Computer Science
 
 ---
 
@@ -410,6 +405,6 @@ You are free to use, modify, and distribute this project for learning, portfolio
 
 ### ⭐ If you like this project, consider starring the repository.
 
-Built with care for a professional full-stack portfolio.
+Built with Node.js, Express.js, MongoDB, Bootstrap 5, and Vanilla JavaScript.
 
 </div>
