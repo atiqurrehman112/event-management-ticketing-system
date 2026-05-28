@@ -613,6 +613,192 @@ a {
   box-shadow: 0 14px 34px rgba(0, 0, 0, 0.24);
 }
 
+.current-poster-img {
+  aspect-ratio: 16 / 10;
+  border: 1px solid rgba(174, 190, 255, 0.24);
+  border-radius: var(--eh-radius);
+  box-shadow: var(--eh-shadow-soft);
+  max-width: 260px;
+  object-fit: cover;
+  width: 100%;
+}
+
+.ticket-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.print-ticket-page {
+  align-items: center;
+  background: #f4f7fb;
+  color: #0f172a;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 28px;
+}
+
+.pdf-ticket-wrapper {
+  background: #f4f7fb;
+  left: -9999px;
+  padding: 24px;
+  position: fixed;
+  top: 0;
+  width: 820px;
+  z-index: -1;
+}
+
+.print-ticket-card {
+  background: #ffffff;
+  border: 2px dashed #6b7cff;
+  border-radius: 18px;
+  box-shadow: 0 22px 70px rgba(15, 23, 42, 0.18);
+  color: #0f172a;
+  font-family: Inter, Arial, sans-serif;
+  margin: 0 auto;
+  max-width: 760px;
+  overflow: hidden;
+  width: 100%;
+}
+
+.print-ticket-header {
+  align-items: center;
+  background: linear-gradient(135deg, #111827, #4338ca 55%, #2563eb);
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  padding: 24px 28px;
+}
+
+.print-ticket-header > div {
+  align-items: center;
+  display: flex;
+  gap: 12px;
+}
+
+.print-ticket-brand {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 10px;
+  display: inline-flex;
+  font-weight: 900;
+  height: 42px;
+  justify-content: center;
+  width: 42px;
+}
+
+.print-ticket-status {
+  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 999px;
+  font-weight: 800;
+  padding: 8px 14px;
+  text-transform: uppercase;
+}
+
+.print-ticket-body {
+  padding: 28px;
+}
+
+.print-ticket-body small,
+.print-ticket-grid small {
+  color: #64748b;
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.print-ticket-body h1 {
+  color: #0f172a;
+  font-size: 2rem;
+  font-weight: 900;
+  margin: 6px 0 8px;
+}
+
+.print-ticket-body p {
+  color: #475569;
+  margin-bottom: 0;
+}
+
+.print-ticket-grid {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 24px;
+}
+
+.print-ticket-grid > div {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 14px;
+}
+
+.print-ticket-grid strong,
+.print-ticket-grid span {
+  display: block;
+  overflow-wrap: anywhere;
+}
+
+.print-ticket-footer {
+  align-items: center;
+  background: #f8fafc;
+  border-top: 1px dashed #94a3b8;
+  display: flex;
+  gap: 20px;
+  padding: 22px 28px;
+}
+
+.print-ticket-footer p {
+  color: #334155;
+  font-weight: 800;
+  margin: 0;
+}
+
+.qr-placeholder {
+  background:
+    linear-gradient(90deg, transparent 0 8px, rgba(15, 23, 42, 0.06) 8px 10px),
+    linear-gradient(transparent 0 8px, rgba(15, 23, 42, 0.06) 8px 10px),
+    #fff;
+  background-size: 18px 18px;
+  border: 2px solid #0f172a;
+  border-radius: 10px;
+  flex: 0 0 auto;
+  height: 132px;
+  position: relative;
+  width: 132px;
+}
+
+.qr-placeholder::before,
+.qr-placeholder::after {
+  background: #0f172a;
+  content: "";
+  height: 24px;
+  position: absolute;
+  width: 24px;
+}
+
+.qr-placeholder::before {
+  left: 10px;
+  top: 10px;
+}
+
+.qr-placeholder::after {
+  bottom: 10px;
+  right: 10px;
+}
+
+.qr-placeholder span {
+  background: #0f172a;
+  border-radius: 3px;
+  display: block;
+  position: absolute;
+}
+
 .auth-aside.surface-strong,
 .admin-sidebar.surface {
   overflow: hidden;
@@ -702,6 +888,31 @@ a {
 
   .stat {
     padding: 18px;
+  }
+
+  .ticket-actions {
+    align-items: stretch;
+  }
+
+  .print-ticket-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .print-ticket-footer {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media print {
+  body.print-ticket-page {
+    background: #fff;
+    padding: 0;
+  }
+
+  .print-ticket-card {
+    box-shadow: none;
+    max-width: none;
   }
 }
 

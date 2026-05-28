@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js",
+    "build": "node scripts/checkBuild.js",
     "seed:admin": "node scripts/createAdmin.js",
     "test": "node --test tests/api.test.js"
   },
@@ -22,7 +23,9 @@
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
+    "html2canvas": "^1.4.1",
     "jsonwebtoken": "^9.0.2",
+    "jspdf": "^4.2.1",
     "mongoose": "^8.9.5",
     "multer": "^1.4.5-lts.1"
   },
